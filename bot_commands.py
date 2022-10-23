@@ -4,14 +4,12 @@ import random
 
 greeting = 'На столе лежит 150 конфет.\nИграют два игрока, делая ход друг после друга.\nПервый ход определяется жеребьёвкой.\nЗа один ход можно забрать не более чем 28 конфет.\nВсе конфеты оппонента достаются сделавшему последний ход.\nСколько конфет нужно взять первому игроку,\nчтобы забрать все конфеты у своего конкурента?\nДля начала игры введите команду /play'
 
-
 async def start(update: Update, context: ContextTypes.DEFAULT_TYPE) -> None:
     await update.message.reply_text(f'{greeting}')
 
 def get_number(): 
     number = random.randint(0,30)
     return number
-
 
 async def send_message(update: Update, context: ContextTypes.DEFAULT_TYPE, text) -> None:
     await update.message.reply_text(text)
