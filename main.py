@@ -1,17 +1,12 @@
-from telegram import Update, Chat, Bot
-from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes,  MessageHandler, filters
-from bot_commands import *
-
-app = ApplicationBuilder().token("5742593421:AAGOqKo_h8YtCP4tvx3R-56HSdMMb5mhQ24").build()
-
-app.add_handler(CommandHandler("start", start))
-app.add_handler(CommandHandler("play", play))
-
-app.run_polling()
+from aiogram.utils import executor
+import handlers
+from bot import dp
 
 
+async def on_startup(_):
+    print('Бот запущен')
 
 
+handlers.registred_handlers(dp)
 
-
-
+executor.start_polling(dp, skip_updates=True, on_startup=on_startup)
